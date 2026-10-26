@@ -1,0 +1,21 @@
+name: symfony-ux-lab
+
+services:
+  app:
+    image: dunglas/frankenphp:1-php8.5-bookworm
+    network_mode: bridge
+    working_dir: /app
+    environment:
+      SERVER_NAME: :80
+    ports:
+      - "8480:80"
+    volumes:
+      - ./:/app
+      - ./docker/Caddyfile:/etc/frankenphp/Caddyfile:ro
+    healthcheck:
+      test: ["CMD", "php", "-r", "exit(false === @file_get_contents('http://localhost/articles') ? 1 : 0);"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+    tty: true

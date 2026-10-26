@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Articles · Symfony UX Lab{% endblock %}
+
+{% block body %}
+<main class="container">
+    <p class="eyebrow">Chapitre 1 · Twig classique</p>
+    <h1>Un mini-blog construit avec du Twig simple</h1>
+    <p class="lead">
+        Pour commencer, le contrôleur fournit trois articles et cette page écrit directement tout le HTML des cartes.
+        Aucun Twig Component, aucun Stimulus et aucun Live Component ne sont encore utilisés.
+    </p>
+
+    <section class="article-grid" aria-label="Liste des articles">
+        {% for article in articles %}
+            <article class="article-card">
+                <div class="article-card__visual" style="--accent: {{ article.accent }}">
+                    {{ article.icon }}
+                </div>
+                <div class="article-card__body">
+                    <span class="article-card__meta">
+                        {{ article.category }} · {{ article.readingTime }} min
+                    </span>
+                    <h2>{{ article.title }}</h2>
+                    <p>{{ article.excerpt }}</p>
+                    <a class="article-card__link" href="{{ path('app_article_show', {slug: article.slug}) }}">
+                        Lire l’article →
+                    </a>
+                </div>
+            </article>
+        {% endfor %}
+    </section>
+</main>
+{% endblock %}
