@@ -1,0 +1,15 @@
+<article class="article-card">
+    <div class="article-card__visual" style="--accent: {{ article.accent }}">
+        {{ article.icon }}
+    </div>
+    <div class="article-card__body">
+        <span class="article-card__meta">
+            {{ article.category }} · {{ article.readingTime }} min
+        </span>
+        <h2>{{ article.title }}</h2>
+        <p>{{ article.excerpt }}</p>
+        <a class="article-card__link" href="{{ path('app_article_show', {slug: article.slug}) }}">
+            Lire l’article →
+        </a>
+    </div>
+</article>
