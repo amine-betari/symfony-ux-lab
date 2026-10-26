@@ -4,30 +4,16 @@
 
 {% block body %}
 <main class="container">
-    <p class="eyebrow">Chapitre 1 · Twig classique</p>
-    <h1>Un mini-blog construit avec du Twig simple</h1>
+    <p class="eyebrow">Chapitre 2 · Twig Components</p>
+    <h1>La même interface avec une carte réutilisable</h1>
     <p class="lead">
-        Pour commencer, le contrôleur fournit trois articles et cette page écrit directement tout le HTML des cartes.
-        Aucun Twig Component, aucun Stimulus et aucun Live Component ne sont encore utilisés.
+        Le contrôleur fournit toujours les mêmes données. La boucle reste dans cette page, mais le HTML de chaque carte
+        appartient maintenant au composant <code>ArticleCard</code>.
     </p>
 
     <section class="article-grid" aria-label="Liste des articles">
         {% for article in articles %}
-            <article class="article-card">
-                <div class="article-card__visual" style="--accent: {{ article.accent }}">
-                    {{ article.icon }}
-                </div>
-                <div class="article-card__body">
-                    <span class="article-card__meta">
-                        {{ article.category }} · {{ article.readingTime }} min
-                    </span>
-                    <h2>{{ article.title }}</h2>
-                    <p>{{ article.excerpt }}</p>
-                    <a class="article-card__link" href="{{ path('app_article_show', {slug: article.slug}) }}">
-                        Lire l’article →
-                    </a>
-                </div>
-            </article>
+            <twig:ArticleCard :article="article" />
         {% endfor %}
     </section>
 </main>

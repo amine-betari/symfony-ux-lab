@@ -2,7 +2,7 @@
 
 Formation progressive consacrée à Twig, Twig Components, Stimulus et Symfony UX Live Components.
 
-## Premier chapitre
+## Chapitre 1 — Twig classique
 
 Le premier exemple est volontairement construit avec du Twig classique :
 
@@ -12,6 +12,16 @@ Le premier exemple est volontairement construit avec du Twig classique :
 - aucun Twig Component, Stimulus ou Live Component n'est encore utilisé.
 
 Cette base permettra de voir précisément ce que Twig Components améliorera au chapitre suivant.
+
+## Chapitre 2 — Twig Components
+
+La carte d'article est extraite dans un composant réutilisable :
+
+```twig
+<twig:ArticleCard :article="article" />
+```
+
+La classe `ArticleCard` déclare la donnée reçue. Le template du composant possède le HTML de la carte. Le contrôleur ne change pas et la page conserve uniquement la boucle.
 
 ## Installation
 

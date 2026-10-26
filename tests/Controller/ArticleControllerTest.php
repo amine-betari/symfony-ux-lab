@@ -6,13 +6,13 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 final class ArticleControllerTest extends WebTestCase
 {
-    public function testArticleListUsesClassicTwigMarkup(): void
+    public function testArticleListRendersTheThreeArticleComponents(): void
     {
         $client = static::createClient();
         $crawler = $client->request('GET', '/articles');
 
         self::assertResponseIsSuccessful();
-        self::assertSelectorTextContains('h1', 'mini-blog');
+        self::assertSelectorTextContains('h1', 'carte réutilisable');
         self::assertCount(3, $crawler->filter('.article-card'));
     }
 
