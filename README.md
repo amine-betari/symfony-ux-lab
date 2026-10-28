@@ -54,6 +54,7 @@ docker compose exec app php bin/phpunit
 
 1. [Symfony et Twig classique : construire un mini-blog avant les composants](docs/articles/01-symfony-twig-classique-mini-blog.md)
 2. [Symfony UX Twig Components : extraire une carte d'article réutilisable](docs/articles/02-symfony-ux-twig-components-article-card.md)
+3. [Symfony UX Twig Components : props typées, attributs HTML et variantes](docs/articles/03-twig-components-props-attributs-variantes.md)
 
 ## Article WordPress
 
