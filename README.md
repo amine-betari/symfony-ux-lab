@@ -55,6 +55,10 @@ docker compose exec app php bin/phpunit
 1. [Symfony et Twig classique : construire un mini-blog avant les composants](docs/articles/01-symfony-twig-classique-mini-blog.md)
 2. [Symfony UX Twig Components : extraire une carte d'article réutilisable](docs/articles/02-symfony-ux-twig-components-article-card.md)
 
+## Article WordPress
+
+1. [Symfony UX Twig Components : créer une carte d’article réutilisable](https://www.abetari.com/symfony-ux-twig-components-carte-article-reutilisable/)
+
 ## Parcours prévu
 
 1. Twig classique
