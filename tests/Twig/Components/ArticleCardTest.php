@@ -14,20 +14,20 @@ final class ArticleCardTest extends KernelTestCase
         self::bootKernel();
 
         $rendered = $this->renderTwigComponent('ArticleCard', [
-            'article' => [
-                'slug' => 'tester-un-composant',
-                'title' => 'Tester un composant Twig',
-                'excerpt' => 'Le composant est rendu indépendamment de la page.',
-                'category' => 'Tests',
-                'readingTime' => 3,
-                'icon' => 'T',
-                'accent' => '#7f56d9',
-            ],
+            'slug' => 'tester-un-composant',
+            'title' => 'Tester un composant Twig',
+            'excerpt' => 'Le composant est rendu indépendamment de la page.',
+            'category' => 'Tests',
+            'readingTime' => 3,
+            'icon' => 'T',
+            'accent' => '#7f56d9',
+            'variant' => 'featured',
         ]);
 
         $crawler = $rendered->crawler();
 
         self::assertCount(1, $crawler->filter('article.article-card'));
+        self::assertCount(1, $crawler->filter('article.article-card--featured'));
         self::assertSame('Tester un composant Twig', $crawler->filter('h2')->text());
         self::assertSame('/articles/tester-un-composant', $crawler->filter('a')->attr('href'));
     }

@@ -7,6 +7,12 @@ use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 #[AsTwigComponent]
 final class ArticleCard
 {
-    /** @var array{slug: string, title: string, excerpt: string, category: string, readingTime: int, icon: string, accent: string} */
-    public array $article = [];
+    public string $slug;
+    public string $title;
+    public string $excerpt;
+    public string $category;
+    public int $readingTime;
+    public string $icon;
+    public string $accent;
+    public string $variant = 'default';
 }
