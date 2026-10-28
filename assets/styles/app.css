@@ -70,6 +70,21 @@ h1 {
     box-shadow: 0 14px 36px rgba(16, 24, 40, .07);
 }
 
+.article-card--featured {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: minmax(260px, .85fr) 1.5fr;
+}
+
+.article-card--featured .article-card__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 34px;
+}
+
+.article-card--featured h2 { font-size: 1.8rem; }
+
 .article-card__visual {
     display: grid;
     min-height: 160px;
@@ -107,6 +122,7 @@ h1 {
 
 @media (max-width: 580px) {
     .article-grid { grid-template-columns: 1fr; }
+    .article-card--featured { display: block; }
     .container { padding-top: 42px; }
     .article-page { padding: 26px; }
 }

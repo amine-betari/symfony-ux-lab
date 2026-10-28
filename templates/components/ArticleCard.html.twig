@@ -1,14 +1,16 @@
-<article class="article-card">
-    <div class="article-card__visual" style="--accent: {{ article.accent }}">
-        {{ article.icon }}
+<article {{ attributes.defaults({
+    class: 'article-card article-card--' ~ variant
+}) }}>
+    <div class="article-card__visual" style="--accent: {{ accent }}">
+        {{ icon }}
     </div>
     <div class="article-card__body">
         <span class="article-card__meta">
-            {{ article.category }} · {{ article.readingTime }} min
+            {{ category }} · {{ readingTime }} min
         </span>
-        <h2>{{ article.title }}</h2>
-        <p>{{ article.excerpt }}</p>
-        <a class="article-card__link" href="{{ path('app_article_show', {slug: article.slug}) }}">
+        <h2>{{ title }}</h2>
+        <p>{{ excerpt }}</p>
+        <a class="article-card__link" href="{{ path('app_article_show', {slug}) }}">
             Lire l’article →
         </a>
     </div>
