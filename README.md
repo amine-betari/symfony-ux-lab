@@ -23,6 +23,10 @@ La carte d'article est extraite dans un composant réutilisable :
 
 La classe `ArticleCard` déclare la donnée reçue. Le template du composant possède le HTML de la carte. Le contrôleur ne change pas et la page conserve uniquement la boucle.
 
+## Chapitre 4 — Slots
+
+Le composant fournit un slot `actions` avec un lien par défaut. La première carte remplace uniquement cette zone par un lien personnalisé et un badge, sans dupliquer la structure complète de `ArticleCard`.
+
 ## Installation
 
 Installer les dépendances :
@@ -55,6 +59,7 @@ docker compose exec app php bin/phpunit
 1. [Symfony et Twig classique : construire un mini-blog avant les composants](docs/articles/01-symfony-twig-classique-mini-blog.md)
 2. [Symfony UX Twig Components : extraire une carte d'article réutilisable](docs/articles/02-symfony-ux-twig-components-article-card.md)
 3. [Symfony UX Twig Components : props typées, attributs HTML et variantes](docs/articles/03-twig-components-props-attributs-variantes.md)
+4. [Symfony UX Twig Components : personnaliser un composant avec les slots](docs/articles/04-twig-components-slots.md)
 
 ## Article WordPress
 
@@ -66,10 +71,11 @@ docker compose exec app php bin/phpunit
 1. Twig classique
 2. Twig Components
 3. Props, attributs et variantes
-4. Stimulus
-5. Tests Twig + Stimulus
-6. Live Components
-7. `LiveProp` et `LiveAction`
-8. Formulaires dynamiques
-9. Catalogue et panier interactifs
-10. Tests et production
+4. Slots et composition
+5. Stimulus
+6. Tests Twig + Stimulus
+7. Live Components
+8. `LiveProp` et `LiveAction`
+9. Formulaires dynamiques
+10. Catalogue et panier interactifs
+11. Tests et production
