@@ -4,26 +4,46 @@
 
 {% block body %}
 <main class="container">
-    <p class="eyebrow">Chapitre 3 · Props, attributs et variantes</p>
-    <h1>Un composant configurable et mieux typé</h1>
+    <p class="eyebrow">Chapitre 4 · Slots et contenu personnalisable</p>
+    <h1>Un composant qui accepte du contenu HTML</h1>
     <p class="lead">
-        Chaque information devient une prop typée. La première carte reçoit la variante <code>featured</code>,
-        tandis que les attributs HTML supplémentaires sont transmis automatiquement à sa balise racine.
+        Les props transmettent les données. Le slot <code>actions</code> permet maintenant à la page
+        de remplacer une zone HTML précise sans modifier le composant.
     </p>
 
     <section class="article-grid" aria-label="Liste des articles">
         {% for article in articles %}
-            <twig:ArticleCard
-                :slug="article.slug"
-                :title="article.title"
-                :excerpt="article.excerpt"
-                :category="article.category"
-                :readingTime="article.readingTime"
-                :icon="article.icon"
-                :accent="article.accent"
-                :variant="loop.first ? 'featured' : 'default'"
-                data-card-index="{{ loop.index }}"
-            />
+            {% if loop.first %}
+                <twig:ArticleCard
+                    :slug="article.slug"
+                    :title="article.title"
+                    :excerpt="article.excerpt"
+                    :category="article.category"
+                    :readingTime="article.readingTime"
+                    :icon="article.icon"
+                    :accent="article.accent"
+                    variant="featured"
+                    data-card-index="{{ loop.index }}"
+                >
+                    <twig:block name="actions">
+                        <a class="article-card__link article-card__link--primary" href="{{ path('app_article_show', {slug: article.slug}) }}">
+                            Découvrir l’article →
+                        </a>
+                        <span class="article-card__badge">Choix de la rédaction</span>
+                    </twig:block>
+                </twig:ArticleCard>
+            {% else %}
+                <twig:ArticleCard
+                    :slug="article.slug"
+                    :title="article.title"
+                    :excerpt="article.excerpt"
+                    :category="article.category"
+                    :readingTime="article.readingTime"
+                    :icon="article.icon"
+                    :accent="article.accent"
+                    data-card-index="{{ loop.index }}"
+                />
+            {% endif %}
         {% endfor %}
     </section>
 </main>

@@ -10,8 +10,12 @@
         </span>
         <h2>{{ title }}</h2>
         <p>{{ excerpt }}</p>
-        <a class="article-card__link" href="{{ path('app_article_show', {slug}) }}">
-            Lire l’article →
-        </a>
+        <div class="article-card__actions">
+            {% block actions %}
+                <a class="article-card__link" href="{{ path('app_article_show', {slug}) }}">
+                    Lire l’article →
+                </a>
+            {% endblock %}
+        </div>
     </div>
 </article>
