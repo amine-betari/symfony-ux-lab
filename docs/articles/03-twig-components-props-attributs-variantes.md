@@ -139,15 +139,27 @@ Une variante représente une différence prévue par le design. Il faut éviter 
 
 Une page peut avoir besoin d'ajouter un identifiant, une classe, un attribut ARIA ou une information `data-*` sans que le composant déclare une prop pour chaque attribut HTML possible.
 
-Lors de l'appel, nous ajoutons :
+Prenons cet appel volontairement complet :
 
 ```twig
-data-card-index="{{ loop.index }}"
+<twig:ArticleCard
+    :title="article.title"
+    variant="featured"
+    id="article-principal"
+    class="homepage-card"
+    data-card-index="1"
+    aria-label="Article principal"
+/>
 ```
 
-Twig Components place les attributs qui ne correspondent pas à une prop dans l'objet spécial `attributes`.
+Twig Components sépare automatiquement ce qui est transmis en deux groupes :
 
-Le template les applique sur sa balise racine :
+- `title` et `variant` correspondent à des propriétés déclarées dans la classe PHP : ce sont des **props** ;
+- `id`, `class`, `data-card-index` et `aria-label` ne correspondent à aucune prop : ils sont rangés dans l'objet spécial **`attributes`**.
+
+Autrement dit, une donnée utile au fonctionnement du composant devient généralement une prop. Une information destinée à la balise HTML racine reste un attribut HTML libre.
+
+Cependant, le sac `attributes` n'est pas ajouté magiquement au HTML. Le template du composant doit décider où l'afficher :
 
 ```twig
 <article {{ attributes.defaults({
@@ -155,15 +167,30 @@ Le template les applique sur sa balise racine :
 }) }}>
 ```
 
-`defaults()` fournit la classe de base du composant tout en conservant les attributs transmis par la page.
+`defaults()` fournit les classes de base du composant tout en conservant les attributs transmis par la page. La classe supplémentaire `homepage-card` est donc fusionnée avec celles du composant.
 
-Le HTML final contient les deux :
+Le navigateur reçoit finalement :
 
 ```html
 <article
-    class="article-card article-card--featured"
+    id="article-principal"
+    class="article-card article-card--featured homepage-card"
     data-card-index="1"
+    aria-label="Article principal"
 >
+```
+
+Si nous supprimons `{{ attributes... }}` du template, `id`, `class`, `data-card-index` et `aria-label` ne seront tout simplement pas rendus.
+
+### Attention aux fautes de frappe
+
+Imaginons que nous écrivions `:titel="article.title"` au lieu de `:title="article.title"`. Comme `titel` n'est pas une prop connue, Twig Components peut le considérer comme un simple attribut HTML. Pendant ce temps, la vraie prop obligatoire `title` n'a reçu aucune valeur : le composant peut alors provoquer une erreur ou produire un résultat incorrect.
+
+La règle simple à retenir est donc :
+
+```text
+donnée du composant       → prop PHP déclarée
+information HTML racine   → sac attributes
 ```
 
 Ce mécanisme est particulièrement utile pour :
