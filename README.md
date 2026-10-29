@@ -59,6 +59,7 @@ docker compose exec app php bin/phpunit
 ## Article WordPress
 
 1. [Symfony UX Twig Components : créer une carte d’article réutilisable](https://www.abetari.com/symfony-ux-twig-components-carte-article-reutilisable/)
+2. [Symfony UX Twig Components : props typées, attributs HTML et variantes](https://www.abetari.com/symfony-ux-twig-components-props-attributs-variantes/)
 
 ## Parcours prévu
 
