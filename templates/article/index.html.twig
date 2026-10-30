@@ -4,11 +4,11 @@
 
 {% block body %}
 <main class="container">
-    <p class="eyebrow">Chapitre 4 · Slots et contenu personnalisable</p>
-    <h1>Un composant qui accepte du contenu HTML</h1>
+    <p class="eyebrow">Chapitre 5 · Premiers pas avec Stimulus</p>
+    <h1>Un favori interactif sans recharger la page</h1>
     <p class="lead">
-        Les props transmettent les données. Le slot <code>actions</code> permet maintenant à la page
-        de remplacer une zone HTML précise sans modifier le composant.
+        Twig génère la carte côté serveur. Stimulus ajoute un comportement dans le navigateur :
+        le bouton change d’état et mémorise le favori avec <code>localStorage</code>.
     </p>
 
     <section class="article-grid" aria-label="Liste des articles">
@@ -24,12 +24,23 @@
                     :accent="article.accent"
                     variant="featured"
                     data-card-index="{{ loop.index }}"
+                    data-controller="favorite"
+                    data-favorite-key-value="{{ article.slug }}"
                 >
                     <twig:block name="actions">
                         <a class="article-card__link article-card__link--primary" href="{{ path('app_article_show', {slug: article.slug}) }}">
                             Découvrir l’article →
                         </a>
                         <span class="article-card__badge">Choix de la rédaction</span>
+                        <button
+                            type="button"
+                            class="favorite-button"
+                            aria-pressed="false"
+                            data-favorite-target="button"
+                            data-action="favorite#toggle"
+                        >
+                            ★ <span data-favorite-target="label">Ajouter aux favoris</span>
+                        </button>
                     </twig:block>
                 </twig:ArticleCard>
             {% else %}

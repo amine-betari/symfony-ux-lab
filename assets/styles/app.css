@@ -106,6 +106,9 @@ h1 {
 .article-card__link--primary { padding: 9px 14px; border-radius: 10px; background: #53389e; color: #fff; }
 .article-card__link--primary:hover { background: #42307d; text-decoration: none; }
 .article-card__badge { padding: 6px 10px; border-radius: 999px; background: #f4ebff; color: #6941c6; font-size: .78rem; font-weight: 800; }
+.favorite-button { padding: 9px 13px; border: 1px solid #d0d5dd; border-radius: 10px; background: #fff; color: #344054; font: inherit; font-size: .82rem; font-weight: 800; cursor: pointer; }
+.favorite-button:hover { border-color: #7f56d9; color: #6941c6; }
+.favorite-button.is-active { border-color: #fdb022; background: #fffaeb; color: #b54708; }
 
 .article-page {
     max-width: 760px;

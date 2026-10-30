@@ -14,6 +14,7 @@
         "symfony/flex": "^2",
         "symfony/framework-bundle": "7.4.*",
         "symfony/runtime": "7.4.*",
+        "symfony/stimulus-bundle": "^3.6",
         "symfony/twig-bundle": "7.4.*",
         "symfony/ux-twig-component": "^3.6",
         "symfony/yaml": "7.4.*",
