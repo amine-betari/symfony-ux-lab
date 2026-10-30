@@ -27,6 +27,10 @@ La classe `ArticleCard` déclare la donnée reçue. Le template du composant pos
 
 Le composant fournit un slot `actions` avec un lien par défaut. La première carte remplace uniquement cette zone par un lien personnalisé et un badge, sans dupliquer la structure complète de `ArticleCard`.
 
+## Chapitre 5 — Stimulus
+
+La première carte utilise un contrôleur `favorite`. Un clic modifie le libellé du bouton sans recharger la page et son état est conservé dans le navigateur avec `localStorage`.
+
 ## Installation
 
 Installer les dépendances :
@@ -60,6 +64,7 @@ docker compose exec app php bin/phpunit
 2. [Symfony UX Twig Components : extraire une carte d'article réutilisable](docs/articles/02-symfony-ux-twig-components-article-card.md)
 3. [Symfony UX Twig Components : props typées, attributs HTML et variantes](docs/articles/03-twig-components-props-attributs-variantes.md)
 4. [Symfony UX Twig Components : personnaliser un composant avec les slots](docs/articles/04-twig-components-slots.md)
+5. [Symfony UX Stimulus : créer un favori sans recharger la page](docs/articles/05-stimulus-favori-localstorage.md)
 
 ## Article WordPress
 
