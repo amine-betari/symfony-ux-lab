@@ -71,6 +71,7 @@ docker compose exec app php bin/phpunit
 1. [Symfony UX Twig Components : créer une carte d’article réutilisable](https://www.abetari.com/symfony-ux-twig-components-carte-article-reutilisable/)
 2. [Symfony UX Twig Components : props typées, attributs HTML et variantes](https://www.abetari.com/symfony-ux-twig-components-props-attributs-variantes/)
 3. [Symfony UX Twig Components : personnaliser un composant avec les slots](https://www.abetari.com/symfony-ux-twig-components-personnaliser-composant-slots/)
+4. [Symfony UX Stimulus : créer un favori sans recharger la page](https://www.abetari.com/symfony-ux-stimulus-favori-localstorage/)
 
 ## Parcours prévu
 
