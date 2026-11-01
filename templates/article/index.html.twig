@@ -3,13 +3,36 @@
 {% block title %}Articles · Symfony UX Lab{% endblock %}
 
 {% block body %}
-<main class="container">
-    <p class="eyebrow">Chapitre 5 · Premiers pas avec Stimulus</p>
-    <h1>Un favori interactif sans recharger la page</h1>
+<main
+    class="container"
+    data-controller="favorites-counter"
+    data-action="favorite:changed->favorites-counter#refresh"
+>
+    <p class="eyebrow">Chapitre 6 · Communication entre contrôleurs Stimulus</p>
+    <h1>Plusieurs favoris et un compteur global</h1>
     <p class="lead">
-        Twig génère la carte côté serveur. Stimulus ajoute un comportement dans le navigateur :
-        le bouton change d’état et mémorise le favori avec <code>localStorage</code>.
+        Chaque carte gère son état. Un second contrôleur écoute leurs événements et met à jour
+        le compteur global, toujours sans recharger la page.
     </p>
+
+    <aside class="favorites-summary" aria-live="polite">
+        <div>
+            <span class="favorites-summary__icon" aria-hidden="true">★</span>
+            <strong>
+                <span data-favorites-counter-target="count">0</span>
+                <span data-favorites-counter-target="label">article favori</span>
+            </strong>
+        </div>
+        <button
+            type="button"
+            class="favorites-summary__reset"
+            data-favorites-counter-target="reset"
+            data-action="favorites-counter#clear"
+            hidden
+        >
+            Tout effacer
+        </button>
+    </aside>
 
     <section class="article-grid" aria-label="Liste des articles">
         {% for article in articles %}
@@ -24,23 +47,12 @@
                     :accent="article.accent"
                     variant="featured"
                     data-card-index="{{ loop.index }}"
-                    data-controller="favorite"
-                    data-favorite-key-value="{{ article.slug }}"
                 >
                     <twig:block name="actions">
                         <a class="article-card__link article-card__link--primary" href="{{ path('app_article_show', {slug: article.slug}) }}">
                             Découvrir l’article →
                         </a>
                         <span class="article-card__badge">Choix de la rédaction</span>
-                        <button
-                            type="button"
-                            class="favorite-button"
-                            aria-pressed="false"
-                            data-favorite-target="button"
-                            data-action="favorite#toggle"
-                        >
-                            ★ <span data-favorite-target="label">Ajouter aux favoris</span>
-                        </button>
                     </twig:block>
                 </twig:ArticleCard>
             {% else %}

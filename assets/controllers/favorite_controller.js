@@ -15,6 +15,17 @@ export default class extends Controller {
         this.active = !this.active;
         localStorage.setItem(this.storageKey, String(this.active));
         this.render();
+        this.dispatch('changed', {
+            detail: {
+                key: this.keyValue,
+                active: this.active,
+            },
+        });
+    }
+
+    clear() {
+        this.active = false;
+        this.render();
     }
 
     render() {

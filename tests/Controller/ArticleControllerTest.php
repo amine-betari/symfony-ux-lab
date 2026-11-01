@@ -12,7 +12,7 @@ final class ArticleControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/articles');
 
         self::assertResponseIsSuccessful();
-        self::assertSelectorTextContains('h1', 'favori interactif');
+        self::assertSelectorTextContains('h1', 'compteur global');
         self::assertCount(3, $crawler->filter('.article-card'));
         self::assertCount(3, $crawler->filter('[data-card-index]'));
         self::assertCount(1, $crawler->filter('.article-card--featured'));
@@ -21,11 +21,16 @@ final class ArticleControllerTest extends WebTestCase
         self::assertSame('Choix de la rédaction', $crawler->filter('.article-card__badge')->text());
         self::assertSame('Découvrir l’article →', trim($crawler->filter('.article-card')->first()->filter('.article-card__link')->text()));
         self::assertSame('Lire l’article →', trim($crawler->filter('.article-card')->eq(1)->filter('.article-card__link')->text()));
-        self::assertCount(1, $crawler->filter('[data-controller="favorite"]'));
-        self::assertSame('comprendre-twig', $crawler->filter('[data-controller="favorite"]')->attr('data-favorite-key-value'));
-        self::assertCount(1, $crawler->filter('[data-action="favorite#toggle"]'));
-        self::assertCount(1, $crawler->filter('[data-favorite-target="button"]'));
-        self::assertCount(1, $crawler->filter('[data-favorite-target="label"]'));
+        self::assertCount(1, $crawler->filter('[data-controller="favorites-counter"]'));
+        self::assertCount(1, $crawler->filter('[data-action="favorite:changed->favorites-counter#refresh"]'));
+        self::assertCount(3, $crawler->filter('[data-controller="favorite"]'));
+        self::assertSame('comprendre-twig', $crawler->filter('[data-controller="favorite"]')->first()->attr('data-favorite-key-value'));
+        self::assertCount(3, $crawler->filter('[data-action="favorite#toggle"]'));
+        self::assertCount(3, $crawler->filter('[data-favorite-target="button"]'));
+        self::assertCount(3, $crawler->filter('[data-favorite-target="label"]'));
+        self::assertCount(3, $crawler->filter('[data-action="favorites:cleared@window->favorite#clear"]'));
+        self::assertCount(1, $crawler->filter('[data-favorites-counter-target="count"]'));
+        self::assertCount(1, $crawler->filter('[data-action="favorites-counter#clear"]'));
     }
 
     public function testArticleDetailCanBeOpened(): void

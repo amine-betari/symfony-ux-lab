@@ -1,5 +1,8 @@
 <article {{ attributes.defaults({
-    class: 'article-card article-card--' ~ variant
+    class: 'article-card article-card--' ~ variant,
+    'data-controller': 'favorite',
+    'data-favorite-key-value': slug,
+    'data-action': 'favorites:cleared@window->favorite#clear'
 }) }}>
     <div class="article-card__visual" style="--accent: {{ accent }}">
         {{ icon }}
@@ -16,6 +19,15 @@
                     Lire l’article →
                 </a>
             {% endblock %}
+            <button
+                type="button"
+                class="favorite-button"
+                aria-pressed="false"
+                data-favorite-target="button"
+                data-action="favorite#toggle"
+            >
+                ★ <span data-favorite-target="label">Ajouter aux favoris</span>
+            </button>
         </div>
     </div>
 </article>

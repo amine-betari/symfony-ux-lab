@@ -110,6 +110,11 @@ h1 {
 .favorite-button:hover { border-color: #7f56d9; color: #6941c6; }
 .favorite-button.is-active { border-color: #fdb022; background: #fffaeb; color: #b54708; }
 
+.favorites-summary { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin: 28px 0; padding: 18px 20px; border: 1px solid #e9d7fe; border-radius: 16px; background: #f9f5ff; color: #42307d; }
+.favorites-summary__icon { margin-right: 8px; color: #f79009; }
+.favorites-summary__reset { padding: 8px 12px; border: 1px solid #d6bbfb; border-radius: 9px; background: #fff; color: #6941c6; font: inherit; font-size: .82rem; font-weight: 800; cursor: pointer; }
+.favorites-summary__reset:hover { border-color: #7f56d9; background: #f4ebff; }
+
 .article-page {
     max-width: 760px;
     padding: 42px;
