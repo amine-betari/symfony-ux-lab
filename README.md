@@ -31,6 +31,10 @@ Le composant fournit un slot `actions` avec un lien par défaut. La première ca
 
 La première carte utilise un contrôleur `favorite`. Un clic modifie le libellé du bouton sans recharger la page et son état est conservé dans le navigateur avec `localStorage`.
 
+## Chapitre 6 — Événements Stimulus
+
+Chaque carte possède son contrôleur `favorite`. Le contrôleur `favorites-counter` écoute leurs événements, actualise le compteur global et peut diffuser une réinitialisation à toutes les cartes.
+
 ## Installation
 
 Installer les dépendances :
@@ -65,6 +69,7 @@ docker compose exec app php bin/phpunit
 3. [Symfony UX Twig Components : props typées, attributs HTML et variantes](docs/articles/03-twig-components-props-attributs-variantes.md)
 4. [Symfony UX Twig Components : personnaliser un composant avec les slots](docs/articles/04-twig-components-slots.md)
 5. [Symfony UX Stimulus : créer un favori sans recharger la page](docs/articles/05-stimulus-favori-localstorage.md)
+6. [Symfony UX Stimulus : faire communiquer plusieurs contrôleurs avec des événements](docs/articles/06-stimulus-communication-controleurs-evenements.md)
 
 ## Article WordPress
 
@@ -80,9 +85,10 @@ docker compose exec app php bin/phpunit
 3. Props, attributs et variantes
 4. Slots et composition
 5. Stimulus
-6. Tests Twig + Stimulus
-7. Live Components
-8. `LiveProp` et `LiveAction`
-9. Formulaires dynamiques
-10. Catalogue et panier interactifs
-11. Tests et production
+6. Événements et communication entre contrôleurs Stimulus
+7. Tests Twig + Stimulus
+8. Live Components
+9. `LiveProp` et `LiveAction`
+10. Formulaires dynamiques
+11. Catalogue et panier interactifs
+12. Tests et production
