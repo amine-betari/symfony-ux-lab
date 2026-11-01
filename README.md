@@ -77,6 +77,7 @@ docker compose exec app php bin/phpunit
 2. [Symfony UX Twig Components : props typées, attributs HTML et variantes](https://www.abetari.com/symfony-ux-twig-components-props-attributs-variantes/)
 3. [Symfony UX Twig Components : personnaliser un composant avec les slots](https://www.abetari.com/symfony-ux-twig-components-personnaliser-composant-slots/)
 4. [Symfony UX Stimulus : créer un favori sans recharger la page](https://www.abetari.com/symfony-ux-stimulus-favori-localstorage/)
+5. [Symfony UX Stimulus : faire communiquer plusieurs contrôleurs avec des événements](https://www.abetari.com/symfony-ux-stimulus-communication-controleurs-evenements/)
 
 ## Parcours prévu
 
